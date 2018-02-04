@@ -58,7 +58,7 @@ public class ChatActivity extends BaseActivity implements AIListener {
     EditText editText;
     RelativeLayout addBtn;
     DatabaseReference ref;
-    FirebaseRecyclerAdapter<ChatMessage,chat_rec> adapter;
+    FirebaseRecyclerAdapter<ChatMessage,ChatView> adapter;
     Boolean flagFab = true;
 
     private AIService aiService;
@@ -171,9 +171,9 @@ public class ChatActivity extends BaseActivity implements AIListener {
             }
         });
 
-        adapter = new FirebaseRecyclerAdapter<ChatMessage, chat_rec>(ChatMessage.class,R.layout.msglist,chat_rec.class,ref.child("chat")) {
+        adapter = new FirebaseRecyclerAdapter<ChatMessage, ChatView>(ChatMessage.class,R.layout.msglist,ChatView.class,ref.child("chat")) {
             @Override
-            protected void populateViewHolder(chat_rec viewHolder, ChatMessage model, int position) {
+            protected void populateViewHolder(ChatView viewHolder, ChatMessage model, int position) {
 
                 if (model.getMsgUser().equals("user_" + uname)) {
                     viewHolder.rightText.setText(model.getMsgText());
