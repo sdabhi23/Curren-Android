@@ -82,8 +82,11 @@ public class ChatActivity extends BaseActivity implements AIListener {
 
         ref = FirebaseDatabase.getInstance().getReference();
         ref.keepSynced(true);
+        
+        // TODO: Replace with the Client Access Token of your own Dialogflow chatbot
+        final String ClientAccessToken = "b9eeb25c6c0e4c9e82f7c6225c5d2a4c";
 
-        final AIConfiguration config = new AIConfiguration("b9eeb25c6c0e4c9e82f7c6225c5d2a4c",
+        final AIConfiguration config = new AIConfiguration(ClientAccessToken,
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
 
